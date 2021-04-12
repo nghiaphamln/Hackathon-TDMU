@@ -136,7 +136,7 @@ print("Sai số toàn phương trung bình: ", round(linear_mse,2))
 print("Độ lệch chuẩn sai số: ", round(linear_rmse,2))
 X_test = X_test.tolist()
 X_test = sum(X_test, [])
-print("\nKết quả dự đoán")
+print("\nKết quả dự đoán tỉ lệ thất nghiệp")
 print("GPD:".ljust(25), end="")
 for i in X_test:
     print(str(round(i,2)).ljust(10), end=" ")
@@ -144,14 +144,20 @@ print("\nUnemplement rate:".ljust(25), end=" ")
 for i in y_pred1:
     print(str(round(i,2)).ljust(10), end=" ")
 
+input_pre = float(input('\nNhập vào giá trị GDP để dự đoán: '))
+print("Kết quả dự đoán: ", lin_reg.predict([[np.array(input_pre)]])[0].round(2))
+
 
 print("\n\n----------Polinomial Regression-----------\n")
 print("Sai số toàn phương trung bình: ", round(poly_mse, 2))
 print("Độ lệch chuẩn sai số: ", round(poly_rmse,2))
-print("\nKết quả dự đoán")
+print("\nKết quả dự đoán tỉ lệ thất nghiệp")
 print("GPD:".ljust(25), end="")
 for i in X_test:
     print(str(round(i,2)).ljust(10), end=" ")
 print("\nUnemplement rate:".ljust(25), end=" ")
 for i in y_pred2:
     print(str(round(i,2)).ljust(10), end=" ")
+
+input_pre = float(input('\nNhập vào giá trị GDP để dự đoán: '))
+print("Kết quả dự đoán: ", lin_reg2.predict(poly_reg.fit_transform([[np.array(input_pre)]]))[0].round(2))
